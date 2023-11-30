@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Consume, Food
 # Create your views here.
 
@@ -10,6 +10,8 @@ def index(request):
         user = request.user
         consume = Consume(user=user, food_consumed=consumed)
         consume.save()
+
+        return redirect('index')
 
     foods = Food.objects.all()
     consumed_food = Consume.objects.filter(user=request.user)
