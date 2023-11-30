@@ -1,0 +1,13 @@
+{% extends "calorie_tracker/base.html" %}
+<!-- Start a new section here -->
+{% block body %}
+<!-- A new line here -->
+{% for food in foods %}
+<!-- Starting for loop -->
+{{ food.name }}
+<br />
+{{ food.calories }} 
+<!-- ending for loop -->
+{% endfor %} 
+<!-- ending body -->
+{% endblock body %}
