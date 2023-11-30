@@ -17,7 +17,7 @@
         aria-valuemax="100"
       >
         <div
-          class="progress-bar progress-bar-striped-bg-success progress-bar-animated"
+          class="progress-bar progress-bar-striped bg-success progress-bar-animated"
           style="width: 0%"
         ></div>
       </div>
@@ -102,5 +102,9 @@
   document.getElementById("totalProtein").innerHTML = Math.round(protein * 100) / 100;
   document.getElementById("totalFats").innerHTML = Math.round(fats * 100) / 100;
   document.getElementById("totalCalories").innerHTML = Math.round(calories);
+
+  let caloriePercent = Math.round((calories / 2000) * 100);
+  document.querySelector(".progress").setAttribute("aria-valuenow", caloriePercent);
+  document.querySelector(".progress-bar").setAttribute("style", "width: " + caloriePercent + "%;");
 </script>
 {% endblock script %}
