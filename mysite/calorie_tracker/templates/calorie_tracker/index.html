@@ -2,12 +2,13 @@
 <!-- Start a new section here -->
 {% block body %}
 <!-- A new line here -->
-{% for food in foods %}
-<!-- Starting for loop -->
-{{ food.name }}
-<br />
-{{ food.calories }} 
-<!-- ending for loop -->
-{% endfor %} 
+<form action="">
+    {% csrf_token %}
+    <select name="" id="">
+        {% for food in foods %}
+        <option value="{{ food.name }}">{{ food.name }}</option>
+        {% endfor %}
+    </select>
+</form>
 <!-- ending body -->
 {% endblock body %}
