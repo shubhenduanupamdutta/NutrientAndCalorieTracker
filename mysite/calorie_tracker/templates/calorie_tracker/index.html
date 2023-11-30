@@ -12,5 +12,10 @@
     </select>
     <button type="submit">Add</button>
 </form>
+
+{% for c in consumed_food %}
+{{ c.food_consumed.name }} --> Carbs: {{c.food_consumed.carbs }} --> Protein: {{c.food_consumed.protein }} --> Fat: {{c.food_consumed.fat }} --> Calories: {{c.food_consumed.calories }}<br>
+{% endfor %}
+
 <!-- ending body -->
 {% endblock body %}
