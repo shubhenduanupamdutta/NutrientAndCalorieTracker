@@ -31,7 +31,7 @@
         {% csrf_token %}
         <div class="col-md-8 my-3 offset-md-1">
           <select class="form-select" name="food_consumed" id="food_consumed">
-            <option selected>Choose One of the food ...</option>
+            <option value="0" selected>Choose One of the food ...</option>
             {% for food in foods %}
             <option value="{{ food.name }}">{{ food.name }}</option>
             {% endfor %}

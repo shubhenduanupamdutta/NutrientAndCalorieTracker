@@ -6,6 +6,8 @@ from .models import Consume, Food
 def index(request):
     if request.method == 'POST':
         food_consumed = request.POST.get('food_consumed')
+        if food_consumed == '0':
+            return redirect('index')
         consumed = Food.objects.get(name=food_consumed)
         user = request.user
         consume = Consume(user=user, food_consumed=consumed)
