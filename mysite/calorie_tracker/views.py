@@ -19,3 +19,10 @@ def index(request):
     consumed_food = Consume.objects.filter(user=request.user)
     context = {"foods": foods, "consumed_food": consumed_food}
     return render(request, 'calorie_tracker/index.html', context)
+
+
+def delete(request):
+    user = request.user
+    consumed_food = Consume.objects.filter(user=user)
+    consumed_food.delete()
+    return redirect('index')
