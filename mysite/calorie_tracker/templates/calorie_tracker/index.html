@@ -2,19 +2,34 @@
 <!-- Start a new section here -->
 {% block body %}
 <!-- A new line here -->
-<form method="post">
-    {% csrf_token %}
-    <label for="food_consumed">Food Consumed:</label><br>
-    <select name="food_consumed" id="food_consumed">
-        {% for food in foods %}
-        <option value="{{ food.name }}">{{ food.name }}</option>
-        {% endfor %}
-    </select>
-    <button type="submit">Add</button>
-</form>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center"> Calorie Tracker </h1>
+            <form method="post" class="row g-3 my-3 text-center">
+                {% csrf_token %}
+                <div class="col-md-8 my-3 offset-md-1">
+                    <select class="form-select" name="food_consumed" id="food_consumed">
+                        <option selected>Choose One of the food ...</option>
+                        {% for food in foods %}
+                        <option value="{{ food.name }}">{{ food.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-success" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 
 {% for c in consumed_food %}
-{{ c.food_consumed.name }} --> Carbs: {{c.food_consumed.carbs }} --> Protein: {{c.food_consumed.protein }} --> Fat: {{c.food_consumed.fat }} --> Calories: {{c.food_consumed.calories }}<br>
+{{ c.food_consumed.name }} --> Carbs: {{c.food_consumed.carbs }} --> Protein: {{c.food_consumed.protein }} --> Fat:
+{{c.food_consumed.fat }} --> Calories: {{c.food_consumed.calories }}<br>
 {% endfor %}
 
 <!-- ending body -->
