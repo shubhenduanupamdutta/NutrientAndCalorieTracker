@@ -22,15 +22,39 @@
             </form>
         </div>
     </div>
+
+    <div class="row my-5">
+        <div class="col-md-6 offset-md-3">
+            <div>
+                <h3 class="text-center"> Today's Consumption </h3>
+            </div>
+            <table id="table" class="table table-striped">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">Food Item</th>
+                        <th scope="col">Carbs (g)</th>
+                        <th scope="col">Protein (g)</th>
+                        <th scope="col">Fat (g)</th>
+                        <th scope="col">Calories (cal)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in consumed_food %}
+                    <tr>
+                        <td>{{ c.food_consumed.name }}</td>
+                        <td>{{ c.food_consumed.carbs }}</td>
+                        <td>{{ c.food_consumed.protein }}</td>
+                        <td>{{ c.food_consumed.fat }}</td>
+                        <td>{{ c.food_consumed.calorie }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
 </div>
-
-
-
-
-{% for c in consumed_food %}
-{{ c.food_consumed.name }} --> Carbs: {{c.food_consumed.carbs }} --> Protein: {{c.food_consumed.protein }} --> Fat:
-{{c.food_consumed.fat }} --> Calories: {{c.food_consumed.calories }}<br>
-{% endfor %}
 
 <!-- ending body -->
 {% endblock body %}
