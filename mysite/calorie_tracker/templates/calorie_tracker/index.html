@@ -48,6 +48,13 @@
                         <td>{{ c.food_consumed.calorie }}</td>
                     </tr>
                     {% endfor %}
+                    <tr>
+                        <td id="total"><strong>Total</strong></td>
+                        <td id="totalCarbs"><strong></strong></td>
+                        <td id="totalProtein"><strong></strong></td>
+                        <td id="totalFats"><strong></strong></td>
+                        <td id="totalCalories"><strong></strong></td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -58,3 +65,26 @@
 
 <!-- ending body -->
 {% endblock body %}
+
+{% block script %}
+<script>
+    let table = document.getElementById('table');
+    let carbs = 0;
+    let protein = 0;
+    let fats = 0;
+    let calories = 0;
+
+    for (let i = 1; i < table.rows.length - 1; i++) {
+        carbs += parseFloat(table.rows[i].cells[1].innerHTML);
+        protein += parseFloat(table.rows[i].cells[2].innerHTML);
+        fats += parseFloat(table.rows[i].cells[3].innerHTML);
+        calories += parseFloat(table.rows[i].cells[4].innerHTML);
+    }
+    console.log(carbs, protein, fats, calories)
+    document.getElementById('totalCarbs').innerHTML = Math.round(carbs * 100) / 100;
+    document.getElementById('totalProtein').innerHTML = Math.round(protein * 100) / 100;
+    document.getElementById('totalFats').innerHTML = Math.round(fats * 100) / 100;
+    document.getElementById('totalCalories').innerHTML = Math.round(calories);
+
+</script>
+{% endblock script %}
