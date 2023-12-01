@@ -21,5 +21,6 @@ from calorie_tracker import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('delete/', views.delete, name='delete'),
+    path('delete_item/<int:item_id>/', views.delete_item, name='delete_item'),
     path('admin/', admin.site.urls),
 ]

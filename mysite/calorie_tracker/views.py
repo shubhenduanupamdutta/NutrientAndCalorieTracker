@@ -29,3 +29,9 @@ def delete(request):
         return redirect('index')
 
     return render(request, 'calorie_tracker/delete.html')
+
+
+def delete_item(request, item_id):
+    item = Consume.objects.get(id=item_id)
+    item.delete()
+    return redirect('index')
