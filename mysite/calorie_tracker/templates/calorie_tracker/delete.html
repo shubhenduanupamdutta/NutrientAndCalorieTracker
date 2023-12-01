@@ -1,0 +1,20 @@
+{% extends "calorie_tracker/base.html" %} {% block body %}
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3 text-center">
+      <div class="bg-warning rounded-5 p-3 m-3">
+        <h1>Warning!</h1>
+        <h2>Do you want to restart your progress?</h2>
+        <h4>This will delete all your data and you will have to start from scratch.</h4>
+        <h6>You should use this when restarting your day.</h6>
+      </div>
+      <form action="{% url 'delete' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Clear All</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

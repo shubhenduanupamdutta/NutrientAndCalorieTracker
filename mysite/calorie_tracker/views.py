@@ -24,5 +24,8 @@ def index(request):
 def delete(request):
     user = request.user
     consumed_food = Consume.objects.filter(user=user)
-    consumed_food.delete()
-    return redirect('index')
+    if request.method == "POST":
+        consumed_food.delete()
+        return redirect('index')
+
+    return render(request, 'calorie_tracker/delete.html')
